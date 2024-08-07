@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="0002-1" author="MichalS">
+
+        <createTable tableName="movie">
+            <column name="id" autoIncrement="true" type="bigint">
+                <constraints nullable="false" primaryKey="true"></constraints>
+            </column>
+            <column name="title" type="varchar(100)"></column>
+            <column name="original_title" type="varchar(100)"></column>
+            <column name="release_year" type="int"></column>
+            <column name="short_description" type="varchar(200)"></column>
+            <column name="description" type="varchar(10000)"></column>
+            <column name="youtube_trailer_id" type="varchar(20)"></column>
+            <column name="promoted" type="boolean"></column>
+            <column name="poster" type="varchar(100)"></column>
+            <column name="genre_id" type="bigint">
+                <constraints nullable="false"
+                             foreignKeyName="fk_movie_genre"
+                             referencedTableName="genre"
+                             referencedColumnNames="id"></constraints>
+            </column>
+        </createTable>
+
+    </changeSet>
+</databaseChangeLog>
